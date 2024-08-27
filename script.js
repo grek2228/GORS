@@ -1,9 +1,12 @@
-let coins = 0;
-let clickValue = 1; // Начальное значение клика
+let coins = localStorage.getItem('coins') ? parseInt(localStorage.getItem('coins')) : 0;
+let clickValue = localStorage.getItem('clickValue') ? parseInt(localStorage.getItem('clickValue')) : 1;
+
+document.getElementById('coins').innerText = coins;
 
 document.getElementById('apple').addEventListener('click', () => {
     coins += clickValue;
     document.getElementById('coins').innerText = coins;
+    localStorage.setItem('coins', coins); // Сохраняем монеты
 });
 
 document.getElementById('shopButton').addEventListener('click', () => {
@@ -20,6 +23,8 @@ document.getElementById('upgrade1').addEventListener('click', () => {
         coins -= 50;
         clickValue += 1;
         document.getElementById('coins').innerText = coins;
+        localStorage.setItem('coins', coins); // Сохраняем монеты
+        localStorage.setItem('clickValue', clickValue); // Сохраняем значение клика
         alert("Вы купили улучшение +1 клик!");
     } else {
         alert("Недостаточно монет!");
@@ -32,6 +37,8 @@ document.getElementById('upgrade2').addEventListener('click', () => {
         coins -= 100;
         clickValue += 2;
         document.getElementById('coins').innerText = coins;
+        localStorage.setItem('coins', coins); // Сохраняем монеты
+        localStorage.setItem('clickValue', clickValue); // Сохраняем значение клика
         alert("Вы купили улучшение +2 клика!");
     } else {
         alert("Недостаточно монет!");
@@ -44,6 +51,8 @@ document.getElementById('upgrade3').addEventListener('click', () => {
         coins -= 1000;
         clickValue += 20;
         document.getElementById('coins').innerText = coins;
+        localStorage.setItem('coins', coins); // Сохраняем монеты
+        localStorage.setItem('clickValue', clickValue); // Сохраняем значение клика
         alert("Вы купили улучшение +20 кликов!");
     } else {
         alert("Недостаточно монет!");
